@@ -34,7 +34,7 @@ Run the index.html
 
 ## Authors
 
-* **Aaron Elson** - *Initial work* - [PurpleBooth](https://github.com/aaronelsonp)
+* **Aaron Elson** - *Initial work* -(https://github.com/aaronelsonp)
 
 
 
