@@ -1,77 +1,88 @@
-**Please note:** This repository is not currently maintained, and is kept for historical purpose only.
+# Project Title
 
-Marker Clusterer – A Google Maps JavaScript API utility library
-==============
+One Paragraph of project description goes here
 
-A Google Maps JavaScript API v3 library to create and manage per-zoom-level clusters for large amounts of markers.
-![Analytics](https://maps-ga-beacon.appspot.com/UA-12846745-20/js-marker-clusterer/readme?pixel)
+## Getting Started
 
-[Reference documentation](https://googlemaps.github.io/js-marker-clusterer/docs/reference.html)
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Migrated from the [Google Maps JavaScript API utility libraries on Google Code](https://code.google.com/p/google-maps-utility-library-v3/).
+### Prerequisites
 
-## Usage
+What things you need to install the software and how to install them
 
-Download or clone `markerclusterer.js` and images `m1.png` to `m5.png`, save images in `images` folder.
+```
+Give examples
+```
 
-To use your own custom cluster images just name your images `m[1-5].png` or set the `imagePath` option to the location and name of your images like this: `imagePath: 'customImages/cat'` for images `cat1.png` to `cat5.png`.
+### Installing
 
-index.html
+A step by step series of examples that tell you have to get a development env running
 
-    ...
+Say what the step will be
 
-    <div id="map-container"><div id="map"></div></div>
-    <script src="markerclusterer.js"></script>
-    <script>
-        function initialize() {
-            var center = new google.maps.LatLng(51.5074, 0.1278);
+```
+Give the example
+```
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 3,
-              center: center,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
+And repeat
 
-            var markers = [];
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(51.5074, 0.1278)
-            });
-            markers.push(marker);
+```
+until finished
+```
 
-            var options = {
-                imagePath: 'images/m'
-            };
+End with an example of getting some data out of the system or using it for a little demo
 
-            var markerCluster = new MarkerClusterer(map, markers, options);
-        }
+## Running the tests
 
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-    ...
-    
+Explain how to run the automated tests for this system
 
-## Live Demos
+### Break down into end to end tests
 
-[![Marker Clusterer Screenshot](https://googlemaps.github.io/js-marker-clusterer/screenshot.png)](https://googlemaps.github.io/js-marker-clusterer/docs/examples.html)
+Explain what these tests test and why
 
-[Examples page](https://googlemaps.github.io/js-marker-clusterer/docs/examples.html)
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
-Want to contribute? Check out the [contributing guide](CONTRIBUTING.md)!
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-Copyright 2014 Google Inc. All rights reserved.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## Acknowledgments
 
-    http://www.apache.org/licenses/LICENSE-2.0
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
