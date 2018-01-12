@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <title>LibreHealth Distribution Map</title>
+	
+	 <link rel="shortcut icon" href="https://librehealth.io/img/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="https://librehealth.io/img/apple-touch-icon.png" />
+	
+	<!-- calling in the libraries -->
+	
+	<script  src="libraries/js/jquery.js"></script>
+	
+	<!-- MFB is the float action toggle bottom -->
+	<script src="libraries/js/mfb.js"></script>
+	<link rel="stylesheet" href="libraries/css/mfb.css">
+	
+	<!-- Ionicon for action toggle icons -->
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    
+	<!-- markerclusterer is the library of the map marker, the json is the database-->
+	<script type="text/javascript" src="src/markerclusterer.js"></script>
+	<script src="data.json"></script>
+	
+	<script src="navbar.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="libraries/css/color.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	
+
+    <script>
+      function initialize() {
+	  
+	  
+        var center = new google.maps.LatLng(15, 15);
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: center,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var markers = [];
+        for (var i = 0; i < 100; i++) {
+          var dataPhoto = data.photos[i];
+          var latLng = new google.maps.LatLng(dataPhoto.latitude,
+              dataPhoto.longitude);
+          var marker = new google.maps.Marker({
+            position: latLng
+          });
+          markers.push(marker);
+        }
+        var markerCluster = new MarkerClusterer(map, markers, {imagePath: '../images/m'});
+		
+		
+
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+   
+	<style>
+   #wrapper { position: relative; }
+   #over_map { position: absolute; top: 10px; left: 10px; z-index: 99; }
+</style>
+	
+  </head>
+  
+  
+  <body>
+  <!-- Bootstrap navbar -->
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="lh.png"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class=><a href="http://librehealth.io">Homepage</a></li>
+            <li><a href="http://forum.librehealh.io">Forum</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Projects <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://librehealth.io/projects/lh-toolkit">LH-Toolkit</a></li>
+                <li><a href="https://librehealth.io/projects/lh-ehr">LH-EHR</a></li>
+                <li><a href="https://librehealth.io/projects/lh-radiology">LH-Radiology</a></li>
+              </ul>
+            </li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  
+  
+	<div id="map" styles ="width: 100%; height: 100%; overflow: hidden;" ></div>
+	
+
+	<!-- this div is for overlaying the google map map -->
+	<div id="over_map">
+	
+	<!-- the float action button -->
+	<ul id="menu" class="mfb-component--bl mfb-zoomin"  data-mfb-toggle="hover">
+      <li class="mfb-component__wrap">
+        <a href="#" class="mfb-component__button--main" style="background-color:#ff8c00;">
+          <i class="mfb-component__main-icon--resting ion-plus-round"></i>
+          <i class="mfb-component__main-icon--active ion-close-round"></i>
+        </a>
+        <ul class="mfb-component__list">
+          <li>
+            <a href="" data-mfb-label="Help" class="mfb-component__button--child" style="background-color:#ff8c00;" >
+              <i class="mfb-component__child-icon ion-help"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/LibreHealthIO" data-mfb-label="Follow us on Github" class="mfb-component__button--child" style="background-color:#ff8c00;">
+              <i class="mfb-component__child-icon ion-social-octocat"></i>
+            </a>
+          </li>
+
+          <li>
+            <a style="background-color:#ff8c00;" href="#"
+               data-mfb-label="Support" class="mfb-component__button--child">
+              <i class="mfb-component__child-icon ion-chatbubble-working"></i>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+				
+		
+	</div>
+		
+	
+	
+</html>
